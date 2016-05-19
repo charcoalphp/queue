@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Charcoal-queue by locomotivemtl</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Charcoal-queue</h1>
+      <h2 class="project-tagline">Queue, Queue Items and Queueable objects, for Charcoal</h2>
+      <a href="https://github.com/locomotivemtl/charcoal-queue" class="btn">View on GitHub</a>
+      <a href="https://github.com/locomotivemtl/charcoal-queue/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/locomotivemtl/charcoal-queue/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="charcoal-queue" class="anchor" href="#charcoal-queue" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Charcoal Queue</h1>
+
+<p>Queue Managers, Queue Items and Queueable objects (through Interface &amp; Trait) for Charcoal.</p>
+
+<h2>
+<a id="how-to-install" class="anchor" href="#how-to-install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to install</h2>
+
+<pre><code>composer require locomotivemtl/charcoal-queue`
+</code></pre>
+
+<h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<ul>
+<li>
+<code>locomotivemtl/charcoal-core</code> for the <code>CollectionLoader</code>
+</li>
+</ul>
+
+<h2>
+<a id="queueing-system" class="anchor" href="#queueing-system" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Queueing System</h2>
+
+<p>Queue managers loop queue items. Queue items represent actions to be performed (as defined by the <code>process()</code> method).</p>
+
+<h2>
+<a id="queue-manager" class="anchor" href="#queue-manager" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Queue Manager</h2>
+
+<p>The queue manager is available as an abstract class: <code>AbstractQueueManager</code>.
+This class implements the <code>QueueManagerInterface</code>.</p>
+
+<p>The queue can be identified with the <code>queue_id</code>. It can be set with <code>setQueueId()</code>.</p>
+
+<p>The queue can be processed with <code>processQueue()</code>.
+If for any reason the items need to be loaded, it can be done with <code>loadQueueItems()</code>.</p>
+
+<p>There are 4 callbacks that can be defined:</p>
+
+<ul>
+<li><code>setProcessedCallback()</code></li>
+<li><code>setItemCallback()</code></li>
+<li><code>setItemSuccessCallbak()</code></li>
+<li><code>setItemFailureCallback()</code></li>
+</ul>
+
+<p>There are only 1 abstract method:</p>
+
+<ul>
+<li>
+<code>queueItemProto()</code> which must returns a <code>QueueItemInterface</code> instance</li>
+</ul>
+
+<h2>
+<a id="queue-items" class="anchor" href="#queue-items" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Queue Items</h2>
+
+<p>Queue Items should implement the <code>QueueItemInterface</code>. This can be helped via the <code>QueueItemTrait</code>.</p>
+
+<p>Queue items can be identified with a <code>queue_id</code>. (The same <code>queue_id</code> used by the queue manager).</p>
+
+<p>Items can be processed with <code>process($callback, $successCallback, $failureCallback)</code>.</p>
+
+<p>The queue item properties are:</p>
+
+<ul>
+<li><code>queue_id</code></li>
+<li><code>queue_item_data</code></li>
+<li><code>queued_date</code></li>
+<li><code>processing_date</code></li>
+<li><code>processed_date</code></li>
+<li><code>processed</code></li>
+</ul>
+
+<h2>
+<a id="queuable-objects" class="anchor" href="#queuable-objects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Queuable Objects</h2>
+
+<p>The <code>QueueableInterface</code> defines objects that can be queued. This interface is really simple and only provides:</p>
+
+<ul>
+<li>
+<code>setQueueId()</code> which can be inherited from <code>QueueableTrait</code>
+</li>
+<li>
+<code>queueId()</code> (<code>queue_id</code> getter) which can be inherited from <code>QueueableTrait</code>
+</li>
+<li>
+<code>queue($ts = null)</code> which is abstract and must be written inside class which implement the queueable interface</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/locomotivemtl/charcoal-queue">Charcoal-queue</a> is maintained by <a href="https://github.com/locomotivemtl">locomotivemtl</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
